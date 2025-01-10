@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Liquor Store</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+        .navbar {
+            background-color: #4B0082 !important;
+        }
+        .navbar-brand, .nav-link {
+            color: rgb(255, 255, 255) !important;
+        }
+        .hero {
+            background: url('https://tse2.mm.bing.net/th?id=OIP.K1teT4A4pv_8somtjScYTwHaFN&pid=Api&P=0&h=220') no-repeat center center/cover;
+            height: 600px;
+            color: rgb(255, 255, 255);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+        .footer {
+            background-color: #4B0082;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .category-card {
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        .category-card:hover {
+            transform: scale(1.05);
+        }
+        #cart {
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#"><b>OBO</b>:<i>Order Booze Online</i> </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#categories">Liquors</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item">
+                        <span id="cart" class="nav-link" onclick="showCart()">Cart (0)</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1><b>Discover the Best Liquors from Around the World</b></h1>
+    </div>
+
+    <div class="container my-5" id="categories">
+        <h2 class="text-center">Select Your Category</h2>
+        <div class="row text-center">
+            <div class="col-md-3">
+                <div class="card category-card" onclick="showCategory('beer')">
+                    <img src="https://tse4.mm.bing.net/th?id=OIP.oYekZhea6l50GR6gjmIC7gHaE7&pid=Api&P=0&h=220" class="card-img-top" alt="Beer">
+                    <div class="card-body">
+                        <h5 class="card-title">Beer</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card category-card" onclick="showCategory('whiskey')">
+                    <img src="https://tse1.mm.bing.net/th?id=OIP.lnjdQtmOHhcVRkFL6RCdfAHaFj&pid=Api&P=0&h=220" class="card-img-top" alt="Whiskey">
+                    <div class="card-body">
+                        <h5 class="card-title">Whiskey</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card category-card" onclick="showCategory('rum')">
+                    <img src="https://tse2.mm.bing.net/th?id=OIP.axvdX0Y17gibQ4YJvhR4EAHaE7&pid=Api&P=0&h=220" class="card-img-top" alt="Rum">
+                    <div class="card-body">
+                        <h5 class="card-title">Rum</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card category-card" onclick="showCategory('wine')">
+                    <img src="https://tse3.mm.bing.net/th?id=OIP.Tn8lXwPKpc_heJS_SQUM5QHaE7&pid=Api&P=0&h=220" class="card-img-top" alt="Wine">
+                    <div class="card-body">
+                        <h5 class="card-title">Wine</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5" id="products">
+        <h2 class="text-center">Liquor Brands</h2>
+        <div id="product-list" class="row"></div>
+    </div>
+
+    <!-- About Section -->
+    <div class="container my-5" id="about">
+        <h2 class="text-center">About Liquors</h2>
+        <p class="lead">Liquors are distilled alcoholic beverages made through a process of fermentation and distillation. The different types of liquors are made using a variety of ingredients and techniques, each contributing to their unique flavors, aromas, and textures. Here’s a breakdown of some of the most popular types of liquors:</p>
+        <h4>1. Beer</h4>
+        <p>Beer is one of the oldest and most widely consumed alcoholic drinks in the world. It is typically made from malted barley, hops, yeast, and water. The brewing process creates a wide range of beer styles, including lagers, ales, stouts, and pilsners. Beer is often enjoyed with food and has a light, refreshing quality that makes it perfect for casual occasions.</p>
+        <h5>Popular Beer Figures:</h5>
+        <ul>
+            <li>Global beer consumption: 188 million hectoliters (2023)</li>
+            <li>Top beer-producing countries: China, USA, Brazil, Mexico</li>
+            <li>Leading beer brand: Budweiser</li>
+        </ul>
+
+        <h4>2. Whiskey</h4>
+        <p>Whiskey is a distilled alcoholic beverage made from fermented grain mash. It comes in a variety of types, including Scotch whisky, Bourbon, and Irish whiskey, each with its own distinct characteristics. Whiskey is typically aged in wooden barrels, which gives it rich flavors and deep amber colors. It is a popular drink enjoyed neat, on the rocks, or as a key ingredient in cocktails.</p>
+        <h5>Popular Whiskey Figures:</h5>
+        <ul>
+            <li>Global whiskey market size: $72 billion (2023)</li>
+            <li>Top whiskey-producing countries: Scotland, USA, Ireland, Canada</li>
+            <li>Top whiskey brand: Jack Daniels</li>
+        </ul>
+
+        <h4>3. Rum</h4>
+        <p>Rum is made from sugarcane byproducts such as molasses or sugarcane juice. The production process varies depending on the type of rum being made, but it is typically fermented, distilled, and aged. Rum is a key ingredient in many tropical and island-inspired cocktails, like the Mojito and Piña Colada, and has a sweet, rich flavor with hints of vanilla, caramel, and spice.</p>
+        <h5>Popular Rum Figures:</h5>
+        <ul>
+            <li>Global rum market size: $14 billion (2023)</li>
+            <li>Top rum-producing countries: Dominican Republic, Cuba, Jamaica</li>
+            <li>Top rum brand: Bacardi</li>
+        </ul>
+
+        <h4>4. Wine</h4>
+        <p>Wine is an alcoholic drink made from fermented grapes or other fruits. There are two main types: red wine, which is made from dark-colored grape varieties, and white wine, made from green or yellow grapes. Wine is typically enjoyed with meals and pairs wonderfully with different types of cuisine. Some varieties are also used for special occasions, such as champagne or dessert wines.</p>
+        <h5>Popular Wine Figures:</h5>
+        <ul>
+            <li>Global wine consumption: 24 billion liters (2023)</li>
+            <li>Top wine-producing countries: Italy, France, Spain, USA</li>
+            <li>Top wine brand: Barefoot Wine</li>
+        </ul>
+    </div>
+
+    <div class="container my-5" id="checkout" style="display: none;">
+        <h2 class="text-center">Checkout</h2>
+        <form id="checkout-form">
+            <div class="mb-3">
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="address" class="form-label">Shipping Address</label>
+                <textarea class="form-control" id="address" rows="3" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="payment" class="form-label">Payment Method</label>
+                <select class="form-control" id="payment" required>
+                    <option value="credit">Credit Card</option>
+                    <option value="paypal">PayPal</option>
+                </select>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-success">Complete Purchase</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 Elite Liquor Store. All rights reserved.</p>
+    </div>
+
+   <script>
+    const products = {
+        beer: ["Budweiser", "Heineken", "Corona", "Stella Artois"],
+        whiskey: ["Johnnie Walker", "Jameson", "Jack Daniels", "Chivas Regal"],
+        rum: ["Captain Morgan", "Bacardi", "Havana Club", "Old Monk"],
+        wine: ["Merlot", "Chardonnay", "Cabernet Sauvignon", "Pinot Noir"]
+    };
+
+    let cart = [];
+
+    function showCategory(category) {
+        const productList = document.getElementById("product-list");
+        productList.innerHTML = "";
+        products[category].forEach(brand => {
+            const col = document.createElement("div");
+            col.classList.add("col-md-3");
+            col.innerHTML = `
+                <div class="card">
+                    <img src="https://source.unsplash.com/400x300/?${category}" class="card-img-top" alt="${brand}">
+                    <div class="card-body">
+                        <h5 class="card-title">${brand}</h5>
+                        <button class="btn btn-danger" onclick="addToCart('${category}', '${brand}')">Add to Cart</button>
+                    </div>
+                </div>
+            `;
+            productList.appendChild(col);
+        });
+    }
+
+    function addToCart(category, brand) {
+        const item = cart.find(item => item.category === category && item.brand === brand);
+        if (item) {
+            item.quantity++;
+        } else {
+            cart.push({ category, brand, quantity: 1 });
+        }
+        document.getElementById("cart").textContent = `Cart (${cart.length})`;
+    }
+
+    function showCart() {
+        if (cart.length === 0) {
+            alert("Your cart is empty.");
+            return;
+        }
+
+        let cartSummary = "Your Cart:\n";
+        cart.forEach(item => {
+            cartSummary += `${item.brand} (${item.category}) - Quantity: ${item.quantity}\n`;
+        });
+
+        const proceed = confirm(`${cartSummary}\nProceed to Checkout?`);
+        if (proceed) {
+            document.getElementById("categories").style.display = "none";
+            document.getElementById("products").style.display = "none";
+            document.getElementById("checkout").style.display = "block";
+        }
+    }
+
+    document.getElementById("checkout-form").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const name = document.getElementById("name").value;
+        const address = document.getElementById("address").value;
+        const paymentMethod = document.getElementById("payment").value;
+
+        if (cart.length === 0) {
+            alert("Your cart is empty. Please add items to your cart before checking out.");
+            return;
+        }
+
+        let orderSummary = `Thank you for your purchase, ${name}!\n\n`;
+        orderSummary += `Shipping Address: ${address}\n`;
+        orderSummary += `Payment Method: ${paymentMethod}\n\n`;
+        orderSummary += "Order Summary:\n";
+
+        cart.forEach(item => {
+            orderSummary += `${item.brand} (${item.category}) - Quantity: ${item.quantity}\n`;
+        });
+
+        alert(orderSummary);
+
+        // Clear cart and reset UI
+        cart = [];
+        document.getElementById("cart").textContent = `Cart (0)`;
+
+        document.getElementById("checkout-form").reset();
+        document.getElementById("checkout").style.display = "none";
+        document.getElementById("categories").style.display = "block";
+        document.getElementById("products").style.display = "block";
+    });
+</script>
+
+</body>
+</html>
